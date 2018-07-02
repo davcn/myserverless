@@ -5,10 +5,10 @@ pipeline {
             steps {
                 sh 'python -c \'import computeFn; print computeFn.lambda_handler({"speed":1, "real":3},{})\''
             }
-        }
-	post {
-	    always {
-		archive "*.py"
+	    post {
+	    	always {
+		    archive "*.py"
+	    	}
 	    }
 	}
     }
