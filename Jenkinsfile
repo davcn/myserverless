@@ -6,9 +6,9 @@ pipeline {
                 sh 'python -c \'import computeFn; print computeFn.lambda_handler({"speed":1, "real":3},{})\''
             }
         }
-	stage('publish') {
-	    steps {
-		archiveArtifacts artifacts: '*.py'
+	post {
+	    always {
+		archive "*.py"
 	    }
 	}
     }
