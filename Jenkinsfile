@@ -1,13 +1,19 @@
 pipeline {
-    agent { docker { image 'python:2.7' } }
+    agent { dockerfile true }
     stages {
-        stage('build') {
+	stage('setup') {
+	    steps {
+	        sh 'echo setup'
+	    }
+	}
+        stage('test') {
             steps {
-                sh 'python -c \'import computeFn; print computeFn.lambda_handler({"speed":1, "real":3},{})\''
+		sh 'export AWS_DEFAULT_REGION=us-east-1'
+                sh 'pytest test_dynamodb.py'
             }
 	    post {
 	    	always {
-		    archive "*.py"
+		    archiveArtifacts artifacts: '*.py', fingerprint: true
 	    	}
 	    }
 	}
