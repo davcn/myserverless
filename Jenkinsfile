@@ -8,8 +8,10 @@ pipeline {
 	}
         stage('test') {
             steps {
-		sh 'export AWS_DEFAULT_REGION=us-east-1'
-                sh 'pytest test_dynamodb.py'
+		sh '''
+		   export AWS_DEFAULT_REGION=us-east-1
+		   pytest test_dynamodb.py
+		'''
             }
 	    post {
 	    	always {
