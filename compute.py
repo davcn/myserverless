@@ -10,17 +10,9 @@ def lambda_handler(event, context):
     dataId = event["dataId"]
 
     # Retrieving information about the sonda from DynamoDB table
-    tableData = dynamodb.getTable('dataTable')
-    dataItem = tableData.query(
-        KeyConditionExpression=Key('id').eq(recordId)
-    )
-
-
-    tableCheck = dynamodb.getTable('checkTable')
-    checkItem = tableCheck.query(
-        KeyConditionExpression=Key('id').eq(dataId)
-    )
-
+    dataItem  = dynamodb.findById('dataTable', recordId)
+    checkItem = dynamodb.findById('checkTable', dataId)
+    
     sondaSpeed = dataItem["Items"][0]["speed"]
     checkSpeed = checkItem["Items"][0]["speed"]
 
@@ -35,7 +27,7 @@ def lambda_handler(event, context):
         'speed' : result
       }
     )
-    
+
 
 
 def calc(sonda, real):
