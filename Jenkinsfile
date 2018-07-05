@@ -1,12 +1,8 @@
 pipeline {
-    agent { dockerfile true }
+	agent none
     stages {
-		stage('setup') {
-		    steps {
-		        sh 'echo setup'
-		    }
-		}
 	    stage('test') {
+		    agent { dockerfile true }
 	        steps {
 				sh 'pytest test_dynamodb.py'
 	        }
@@ -16,5 +12,16 @@ pipeline {
 		    	}
 		    }
 		}
+		stage('deploy') {
+    		agent { 
+    			docker {
+                	reuseNode true
+                	image 'node'
+                }
+            }
+            steps {
+            	sh 'npm i'
+            }
+	    }
     }
 }
