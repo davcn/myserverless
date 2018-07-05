@@ -14,9 +14,8 @@ pipeline {
 		}
 		stage('deploy') {
     		agent { 
-    			docker {
-                	reuseNode true
-                	image 'node'
+    			dockerfile {
+                    dir 'serverless/'
                 }
             }
             steps {
