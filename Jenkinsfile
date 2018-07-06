@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-            	sh 'npm i'
+            	sh 'sls deploy'
             }
 	    }
     }
