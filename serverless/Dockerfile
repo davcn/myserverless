@@ -1,7 +1,7 @@
 FROM node
 
 WORKDIR /home/serverless
-COPY .aws .
+COPY .aws .aws
 COPY hello.py .
 COPY serverless.yml .
 RUN npm install -g serverless
