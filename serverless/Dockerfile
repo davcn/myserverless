@@ -1,6 +1,6 @@
 FROM node
 
-RUN apt-get update && apt-get install python-pip
+RUN apt-get update && apt-get install -y python-pip
 
 WORKDIR /home/serverless
 COPY .aws .aws
