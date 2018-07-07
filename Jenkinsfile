@@ -24,10 +24,8 @@ pipeline {
     		}
             steps {
 				sh '''
-					mkdir /home/.aws
 					echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> /home/.aws/credentials
 					echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> /home/.aws/credentials
-            		cd serverless
             		sls deploy
             	'''
             }
