@@ -8,7 +8,7 @@ pipeline {
 	        }
 		    post {
 		    	always {
-			    archiveArtifacts artifacts: '*.py', fingerprint: true
+			    	archiveArtifacts artifacts: '*.py', fingerprint: true
 		    	}
 		    }
 		}
