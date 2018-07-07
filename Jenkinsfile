@@ -18,9 +18,16 @@ pipeline {
                     dir 'serverless/'
                 }
             }
+            environment {
+        		AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        		AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    		}
             steps {
-				sh 'echo "AWS_ACCESS_KEY_ID=${env.AWS_ACCESS_KEY_ID}\nAWS_SECRET_ACCESS_KEY=${env.AWS_SECRET_ACCESS_KEY}" > .aws/credentials'
-            	sh 'sls deploy'
+				sh '''
+					echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .aws/credentials
+					echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .aws/credentials
+            		sls deploy
+            	'''
             }
 	    }
     }
