@@ -1,6 +1,6 @@
 FROM node
 
-RUN apt-get install python-pip python-dev build-essential 
+RUN apt-get install python-pip 
 
 WORKDIR /home/serverless
 COPY .aws .aws
