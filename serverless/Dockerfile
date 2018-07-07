@@ -8,5 +8,6 @@ COPY requirements.txt .
 
 RUN npm install -g serverless
 RUN npm install serverless-python-requirements
+RUN NPM install pip
 RUN pip install --no-cache-dir -r requirements.txt
 
