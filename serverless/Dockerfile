@@ -1,4 +1,4 @@
-FROM amaysim/serverless
+FROM amaysim/serverless:1.27.1
 
 WORKDIR /home/serverless
 COPY .aws .aws
