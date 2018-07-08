@@ -4,6 +4,7 @@ WORKDIR /home/serverless
 COPY .aws .aws
 COPY hello.py .
 COPY serverless.yml .
+COPY .serverless .serverless
 COPY requirements.txt .
 
 # install yarn
@@ -21,5 +22,5 @@ RUN npm install serverless-python-requirements
 
 # install aws-cli
 RUN pip install awscli
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
