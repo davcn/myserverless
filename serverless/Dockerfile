@@ -1,6 +1,4 @@
-FROM node
-
-RUN apt-get update && apt-get install -y python-pip
+FROM amaysim/serverless
 
 WORKDIR /home/serverless
 COPY .aws .aws
@@ -8,8 +6,7 @@ COPY hello.py .
 COPY serverless.yml .
 COPY requirements.txt .
 
-RUN npm install -g serverless
-RUN npm install serverless-python-requirements 
-RUN pip install --upgrade setuptool 
+#RUN npm install -g serverless
+#RUN npm install serverless-python-requirements 
 RUN pip install -r requirements.txt
 
