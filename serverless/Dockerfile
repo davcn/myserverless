@@ -21,5 +21,5 @@ RUN npm install serverless-python-requirements
 
 # install aws-cli
 RUN pip install awscli
-#RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
